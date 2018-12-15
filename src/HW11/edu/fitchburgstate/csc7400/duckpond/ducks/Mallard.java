@@ -7,9 +7,9 @@
 
 package HW11.edu.fitchburgstate.csc7400.duckpond.ducks;
 
-import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.fly.SimpleFly;
-import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.quack.DuckQuack;
-import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.swim.SimpleSwim;
+import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.fly.FlyBehaviorFactory;
+import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.quack.QuackBehaviorFactory;
+import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.swim.SwimBehaviorFactory;
 
 /**
  * Mallard duck for pond
@@ -22,8 +22,8 @@ public class Mallard extends Duck {
 	public Mallard() {
 		super("Mallard",
 				"mallard.bmp",
-				new SimpleFly("mallard flap"),
-				new SimpleSwim("mallard paddle"),
-				new DuckQuack());
+				FlyBehaviorFactory.flybehavior("mallard flap"),
+				SwimBehaviorFactory.swimbehavior("mallard paddle"),
+				QuackBehaviorFactory.quackbehavior("quack"));
 	}
 }
