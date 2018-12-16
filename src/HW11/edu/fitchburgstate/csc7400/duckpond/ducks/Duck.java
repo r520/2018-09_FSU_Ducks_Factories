@@ -11,6 +11,9 @@ import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.BehaviorHelper;
 import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.fly.FlyingBehavior;
 import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.quack.QuackBehavior;
 import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.swim.SwimBehavior;
+import HW11.edu.fitchburgstate.csc7400.duckpond.behaviors.BehaviorStrategy;
+
+
 import external.Bitmap;
 
 /**
@@ -23,26 +26,18 @@ public class Duck implements DuckType {
 	 * 
 	 * @param duckTypeName
 	 * 			  a string that identifies the duck type
-	 * @param bitmapFilname
+	 * @param bitmapFilename
 	 *            the still bitmap file name of the duck
-	 * @param flyingGifFilename
-	 *            the flying behavior
-	 * @param swimmingGifFilename
-	 *            the swimming behavior
-	 * @param quackingBehavior
-	 *            the quacking behavior
-	 */
+	 * @param bs	 */
 
 	public Duck(String duckTypeName,
 			String bitmapFilename, 
-			FlyingBehavior flyingBehavior, 
-			SwimBehavior swimmingBehavior, 
-			QuackBehavior quackingBehavior) {
+			BehaviorStrategy bs) {
 		this.duckTypeName = duckTypeName;
 		this.still = BehaviorHelper.createBitmap(bitmapFilename);
-		this.flyBehavior = flyingBehavior;
-		this.swimBehavior = swimmingBehavior;
-		this.quackBehavior = quackingBehavior;
+		this.flyBehavior = bs.getFlyBehavior() ;
+		this.swimBehavior = bs.getSwimBehavior();
+		this.quackBehavior = bs.getQuackBehavior();
 	}
 
 	/**
